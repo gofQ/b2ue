@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: System libraries for bpy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxrender1 libxxf86vm1 libxfixes3 libxi6 libxkbcommon0 libsm6 libgl1 libegl1
+
+      - name: Install bpy and pytest
+        run: pip install bpy==5.2.2 pytest
+
+      - name: Run tests
+        run: python -m pytest tests -q
+
+      - name: Build the add-on zip
+        run: python tools/build_addon.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: b2ue-addon
+          path: dist/*.zip
