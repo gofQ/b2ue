@@ -6,6 +6,7 @@ name = "Blender to Unreal Pipeline"
 tagline = "Clean up, decimate, auto-rig and export AI models for Unreal"
 maintainer = "Abdulkerim Tabakoğlu"
 type = "add-on"
+website = "https://github.com/gofQ/b2ue"
 tags = ["Import-Export", "Game Engine", "Rigging", "Mesh"]
 
 blender_version_min = "4.2.0"
@@ -13,7 +14,7 @@ license = ["SPDX:GPL-3.0-or-later"]
 copyright = ["2026 Abdulkerim Tabakoğlu"]
 
 [permissions]
-files = "Reads models and writes FBX and texture files to the chosen folder"
+files = "Read 3D models, write FBX files and textures"
 
 [build]
 paths_exclude_pattern = ["__pycache__/", "*.pyc", "/.git/"]

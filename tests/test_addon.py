@@ -152,3 +152,11 @@ def test_build_script_makes_an_installable_zip(tmp_path):
     names = zipfile.ZipFile(target).namelist()
     assert "blender_manifest.toml" in names and "__init__.py" in names and "addon.py" in names
     assert not any("__pycache__" in n or n.endswith(".pyc") for n in names)
+
+
+def test_zip_passes_blenders_extension_validator(tmp_path):
+    """The same checks extensions.blender.org runs on upload (field lengths and so on)."""
+    sys.path.insert(0, str(ROOT / "tools"))
+    from build_addon import build, validate
+    ok, message = validate(build(tmp_path))
+    assert ok, message

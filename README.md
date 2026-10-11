@@ -4,7 +4,7 @@
 
 It came out of solo game development in Unreal Engine 5. The same fixes kept coming up for every asset, so they are now automated: millions of triangles, lost textures, wrong scale, unapplied rotations, flipped normals, extra leaf bones and missing skeletons.
 
-> **Status:** early (v0.4.6). Developed and tested with Blender 5.2 (82 automated tests, plus end-to-end runs on real AI-generated models on Windows). Unreal import settings follow common UE5 practice. If an asset imports wrong in your engine version, please open an issue.
+> **Status:** early (v0.4.6). Developed and tested with Blender 5.2 (83 automated tests, plus end-to-end runs on real AI-generated models on Windows). Unreal import settings follow common UE5 practice. If an asset imports wrong in your engine version, please open an issue.
 
 <p align="center"><img src="docs/rig_markers.png" width="420" alt="Rig markers in the viewport: coloured joint dots, labels and a skeleton preview"></p>
 
@@ -453,7 +453,7 @@ pip install bpy pytest
 python -m pytest tests
 ```
 
-The 82 tests build messy sample scenes and run the whole pipeline:
+The 83 tests build messy sample scenes and run the whole pipeline:
 - duplicate vertices, flipped faces, rotated and scaled objects
 - GLB files with packed textures, shape keys, rigs
 - humans in T-pose and A-pose facing different directions
@@ -470,7 +470,7 @@ They then re-import the exported FBX files and check:
 - safe output
 
 Also verified for this release:
-- the add-on zip installs into a clean Blender user folder
+- the add-on zip installs into a clean Blender user folder and passes Blender's extension validator
 - full runs on Windows with Blender 5.2.2: a 1.9M-triangle AI-generated prop with five presets and a 2M-triangle AI-generated character with two presets and three test poses, both also with `--matte` (the report lines, renders and tables above)
 - the marker overlay is drawn with the add-on's own GPU code (the screenshot at the top)
 
